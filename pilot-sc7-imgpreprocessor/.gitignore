@@ -1,5 +1,7 @@
 /target/
-
+/.settings/
+/.classpath
+/.project
 
 ##Java's:
 # Compiled class file
