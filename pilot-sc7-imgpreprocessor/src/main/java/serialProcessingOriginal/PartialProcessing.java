@@ -11,12 +11,23 @@ public class PartialProcessing {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		long startAll = System.currentTimeMillis();
+		// HARD-CODED TESTING LOCALLY.. NO ARGS.
+//		String imgFilePath = "/media/indiana/data/imgs/kutupalong/S1A_IW_GRDH_1SDV_20171030T234807_20171030T234832_019049_020379_5361.zip";
+//		String outputFileName = "subsetCalibOrig5361_4";
+//		String selectedPolygon = "POLYGON ((92.14879238139838 21.201618539702924, 92.14879238139838 21.220340288314883, 92.17299736011773 21.220340288314883, 92.17299736011773 21.201618539702924, 92.14879238139838 21.201618539702924))";
+		// ACCEPTING ARGUMENTS
+		String imgFilePath = args[0];
+		String prefOutFileName = args[1];
+		String selectedPolygon = args[2];
+		for (int i = 3; i < args.length; i++)
+		{
+			selectedPolygon += " " + args[i];
+		}
+		System.out.println(selectedPolygon);
 		
-		String imgFilePath = "/media/indiana/data/imgs/kutupalong/S1A_IW_GRDH_1SDV_20171030T234807_20171030T234832_019049_020379_5361.zip";
-		String outputFileName = "subsetCalibOrig5361_2";
-		String selectedPolygon = "POLYGON ((92.14879238139838 21.201618539702924, 92.14879238139838 21.220340288314883, 92.17299736011773 21.220340288314883, 92.17299736011773 21.201618539702924, 92.14879238139838 21.201618539702924))";
+		// PREPARING FILES
 		File imgFile = new File(imgFilePath);
-        File outputFile = new File(imgFile.getParent(), outputFileName);
+        File outputFile = new File(imgFile.getParent(), prefOutFileName);
 
         // READER
         final OperatorSpiRegistry spiRegistry = GPF.getDefaultInstance().getOperatorSpiRegistry();
